@@ -4,11 +4,91 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Video Search Engine</title>
-    <link rel="stylesheet" href="index.css" />
-    <script src="index.js" defer></script>
+    <title>Simple Video Search Engine</title>
+    <link rel="stylesheet" href="/index.css" />
+    <script
+      async
+      src="https://cse.google.com/cse.js?cx=37d228e8d5347463f"
+    ></script>
   </head>
   <body>
-    <h1>Welcome to Video Search Engine</h1>
+    <header>
+      <div class="logo">
+        <img src="./assets/logo.webp" alt="Logo" />
+      </div>
+      <h1>Simple Video Search Engine</h1>
+    </header>
+    <main>
+      <!-- <div class="gcse-searchbox" data-as_sitesearch="youtube.com"></div> -->
+
+      <div id="search-results">
+        <div
+          class="gcse-search"
+          data-as_sitesearch="youtube.com"
+          data-refinementStyle="link"
+        ></div>
+      </div>
+    </main>
+
+    <div id="view-overlay" style="display: none">
+      <div style="width: 100%">
+        <iframe
+          id="view-overlay-src"
+          width="100%"
+          src=""
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        ></iframe>
+        <div class="details">
+          <h3 class="details-title" id="details-title"></h3>
+          <div class="details-info">
+            <div id="details-youtube-url">
+              <img src="assets/yt.png" width="12px" height="12px" alt="" />
+              Youtube.com
+            </div>
+            <p>.</p>
+            <p id="details-views-count"></p>
+          </div>
+        </div>
+      </div>
+
+      <div id="view-overlay-actions">
+        <a target="_blank" rel="noreferrer" href="">
+          <button class="view-overlay__button" id="view-overlay-visit">
+            Visit
+          </button>
+        </a>
+        <button class="view-overlay__button" id="view-overlay-close">
+          Close
+        </button>
+      </div>
+    </div>
+
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
+
+<template id="result-card-template">
+  <div class="result-card" data-index="100" id="result-card">
+    <div id="result-card-video-thumbnail">
+      <img
+        id="result-card-thumbnail"
+        class="result-card__thumbnail"
+        src="/assets/video.png"
+        alt=""
+      />
+      <p id="result-card-video-duration"></p>
+    </div>
+    <div class="result-card__desc">
+      <h2 id="result-card-title"></h2>
+      <div id="result-card-by" class="result-card__desc__by"></div>
+      <div class="result-card__desc__meta">
+        <div id="result-card-url">
+          <img src="assets/yt.png" width="12px" height="12px" alt="" />
+          Youtube.com
+        </div>
+        <span id="result-card-view-count"></span>
+      </div>
+    </div>
+  </div>
+</template>
